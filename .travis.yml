@@ -18,10 +18,9 @@ install:
 before_script:
   - docker --version # print the version for logging
   - docker-compose -f docker-compose-build.yaml build --parallel
-  - docker tag reverseproxy $DOCKER_USER/reverseproxy
+  - docker tag udagram-reverseproxy $DOCKER_USER/reverseproxy
   - docker tag udagram-api-user $DOCKER_USER/udagram-api-user
   - docker tag udagram-api-feed $DOCKER_USER/udagram-api-feed
-  # - docker tag udagram-frontend:local $DOCKER_USER/udagram-frontend:stable
   - docker tag udagram-frontend:local $DOCKER_USER/udagram-frontend
 
 script:
