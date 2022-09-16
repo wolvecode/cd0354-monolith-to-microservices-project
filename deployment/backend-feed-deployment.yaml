@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-feed
+  labels:
+    app: udagram-api-feed
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: udagram-api-feed
+  template:
+    metadata:
+      labels:
+        app: udagram-api-feed
+    spec:
+      containers:
+      - name: udagram-api-feed
+        image: docker.io/wolvecode/udagram-api-feed:latest
+        imagePullPolicy: Always
+        env:
+          - name: POSTGRES_USERNAME
+            value: "biodun"
+          - name: POSTGRES_PASSWORD
+            value: "biodun1234"
+          - name: POSTGRES_HOST
+            value: "biodun1234.cnnjvx1od7gu.us-east-1.rds.amazonaws.com"
+          - name: POSTGRES_DB
+            value: "postgres"          
+        ports:
+        - containerPort: 8080
+        envFrom:
+          - configMapRef:
+              name: udagram-configmap
+          - secretRef:
+              name: env-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: backend-feed
+  name: backend-feed
+spec:
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
