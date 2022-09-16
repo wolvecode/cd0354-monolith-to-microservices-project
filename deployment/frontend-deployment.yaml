@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: udagram-frontend
-        image: docker.io/wolvecode/udagram-frontend:latest
+        image: docker.io/wolvecode/udagram-frontend:v4
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

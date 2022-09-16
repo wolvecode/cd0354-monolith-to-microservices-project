@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: udagram-api-user
-        image: docker.io/wolvecode/udagram-api-user:latest
+        image: docker.io/wolvecode/udagram-api-user:v4
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

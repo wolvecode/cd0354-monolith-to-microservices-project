@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: udagram-reverseproxy
-        image: docker.io/wolvecode/reverseproxy:latest
+        image: docker.io/wolvecode/reverseproxy:v4
         imagePullPolicy: Always
         ports:
         - containerPort: 8081

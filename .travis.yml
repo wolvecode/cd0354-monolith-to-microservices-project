@@ -18,17 +18,17 @@ install:
 before_script:
   - docker --version # print the version for logging
   - docker-compose -f docker-compose-build.yaml build --parallel
-  - docker tag udagram-api-user wolvecode/udagram-api-user:v1
-  - docker tag udagram-api-feed wolvecode/udagram-api-feed:v1
-  - docker tag udagram-frontend:local wolvecode/udagram-frontend:v1
-  - docker tag reverseproxy wolvecode/reverseproxy:v1
+  - docker tag udagram-api-user wolvecode/udagram-api-user:v4
+  - docker tag udagram-api-feed wolvecode/udagram-api-feed:v4
+  - docker tag udagram-frontend:local wolvecode/udagram-frontend:v4
+  - docker tag reverseproxy wolvecode/reverseproxy:v4
 
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
-  - docker push wolvecode/reverseproxy:v1
-  - docker push wolvecode/udagram-api-user:v1
-  - docker push wolvecode/udagram-api-feed:v1
-  - docker push wolvecode/udagram-frontend:v1
+  - docker push wolvecode/reverseproxy:v4
+  - docker push wolvecode/udagram-api-user:v4
+  - docker push wolvecode/udagram-api-feed:v4
+  - docker push wolvecode/udagram-frontend:v4
 
 after_success:
   - echo "Success"
